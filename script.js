@@ -1,23 +1,22 @@
-const fechaCumple = new Date("October 6, 2026 00:00:00").getTime();
+const fecha = new Date("2026-10-06 00:00:00").getTime();
 
-function actualizarContador() {
-    const ahora = new Date().getTime();
-    const diferencia = fechaCumple - ahora;
+function actualizar(){
+const ahora = new Date().getTime();
+const diff = fecha - ahora;
 
-    if (diferencia <= 0) {
-        document.getElementById("contador").innerHTML =
-        "🎉 ¡Feliz cumpleaños, Mamita! ❤️";
-        return;
-    }
-
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-    document.getElementById("contador").innerHTML =
-    `⏳ ${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
+if(diff <= 0){
+document.getElementById("contador").innerHTML = "🎉 ¡Feliz cumpleaños Mamita ❤️!";
+return;
 }
 
-setInterval(actualizarContador, 1000);
-actualizarContador();
+let dias = Math.floor(diff / (1000*60*60*24));
+let horas = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+let minutos = Math.floor((diff % (1000*60*60))/(1000*60));
+let segundos = Math.floor((diff % (1000*60))/1000);
+
+document.getElementById("contador").innerHTML =
+`⏳ ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+setInterval(actualizar,1000);
+actualizar();
